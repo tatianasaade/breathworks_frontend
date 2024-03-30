@@ -8,13 +8,12 @@ import streamlit as st
 #     "[View the source code](https://github.com/streamlit/llm-examples/blob/main/pages/2_Chat_with_search.py)"
 #     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-# Inject custom CSS to change background color
+#Inject custom CSS to change background color
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 local_css("style.css")
-
 
 st.title("🫁 Breathworks-AI Platform 🫁")
 st.sidebar.image("logo.jpg", use_column_width=True)
