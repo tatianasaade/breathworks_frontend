@@ -6,7 +6,6 @@ st.sidebar.image("logo.jpg", use_column_width=True)
 from agent.core_lda import ModelHandler
 
 handler = ModelHandler()
-handler.list_models()
 handler.create_model_adapter(name="TestAdapter")
 
 
