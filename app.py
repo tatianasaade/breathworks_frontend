@@ -1,43 +1,34 @@
 import streamlit as st
 
+st.title("Breathworks-AI Platform 🫁")
+st.sidebar.image("logo.jpg", use_column_width=True)
 
-# with st.sidebar:
-#     openai_api_key = st.text_input(
-#         "OpenAI API Key", key="langchain_search_api_key_openai", type="password"
-#     )
-#     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-#     "[View the source code](https://github.com/streamlit/llm-examples/blob/main/pages/2_Chat_with_search.py)"
-#     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+from agent.core_lda import ModelHandler
 
-st.title("🫁 Breathworks-AI Platform 🫁")
+handler = ModelHandler()
+handler.list_models()
+handler.create_model_adapter(name="TestAdapter")
 
-"""
-Some text explaining what Breathworks does etc.
-"""
 
-# if "messages" not in st.session_state:
-#     st.session_state["messages"] = [
-#         {"role": "assistant", "content": "Hi, I'm a chatbot who can search the web. How can I help you?"}
-#     ]
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [
+        {"role": "assistant", "content": "Hi, I'm a Breathworks chatbot who can answer questions. How can I help you?"}
+    ]
 
-# for msg in st.session_state.messages:
-#     st.chat_message(msg["role"]).write(msg["content"])
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
 
-# if prompt := st.chat_input(placeholder="Who won the Women's U.S. Open in 2018?"):
-#     st.session_state.messages.append({"role": "user", "content": prompt})
-#     st.chat_message("user").write(prompt)
+if prompt := st.chat_input(placeholder="What are the benefits of meditation?"):
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.chat_message("user").write(prompt)
+    print(prompt)
+    # Generate and print the enhanced response using LDA topics
+    enhanced_response = handler.generate_response(
+        query=prompt,
+        use_lda_insights=True  # Enhanced answer with LDA topics
+    )
+    print(f"> Enhanced Response (with LDA insights):\n{enhanced_response}\n")
 
-#     if not openai_api_key:
-#         st.info("Please add your OpenAI API key to continue.")
-#         st.stop()
-
-#     llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
-#     search = DuckDuckGoSearchRun(name="Search")
-#     search_agent = initialize_agent(
-#         [search], llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True
-#     )
-#     with st.chat_message("assistant"):
-#         st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
-#         response = search_agent.run(st.session_state.messages, callbacks=[st_cb])
-#         st.session_state.messages.append({"role": "assistant", "content": response})
-#         st.write(response)
+    with st.chat_message("assistant"):
+        st.session_state.messages.append({"role": "assistant", "content": enhanced_response})
+        st.write(enhanced_response)
