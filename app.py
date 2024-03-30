@@ -21,7 +21,7 @@ for msg in st.session_state.messages:
 if prompt := st.chat_input(placeholder="What are the benefits of meditation?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
-
+    print(prompt)
     # Generate and print the enhanced response using LDA topics
     enhanced_response = handler.generate_response(
         query=prompt,
