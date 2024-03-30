@@ -2,7 +2,6 @@ import streamlit as st
 
 st.title("Breathworks AI Platform 🫁")
 st.sidebar.image("logo.jpg", use_column_width=True)
-st.markdown('<style>' + open('.streamlit/styles.css').read() + '</style>', unsafe_allow_html=True)
 
 from agent.core_lda import ModelHandler
 
