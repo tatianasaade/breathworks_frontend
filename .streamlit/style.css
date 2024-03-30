@@ -1,0 +1,5 @@
+/* styles.css */
+/* Change text color for st.chatbot */
+.stChatBotMsg > div > div {
+  color: #000000; /* Set the text color to black */
+}
