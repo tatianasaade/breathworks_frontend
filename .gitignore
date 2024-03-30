@@ -1,3 +1,5 @@
 raw_data/
 breathworks.egg-info/
 .python-version
+.env
+.envrc

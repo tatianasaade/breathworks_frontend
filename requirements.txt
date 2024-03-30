@@ -1,3 +1,6 @@
-
+pandas
 streamlit==1.32.2
+gradientai
+python-dotenv
+
 
