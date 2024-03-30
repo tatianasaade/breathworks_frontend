@@ -1,5 +1,5 @@
 import os
-from utils import persona_description, breathworks_description, lda_keywords, topic_insights
+from agent.utils import persona_description, breathworks_description, lda_keywords, topic_insights
 from gradientai import Gradient
 from dotenv import load_dotenv
 import streamlit as st
