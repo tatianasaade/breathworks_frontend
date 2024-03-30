@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("🫁 Breathworks-AI Platform 🫁")
+st.title("Breathworks-AI Platform 🫁")
 st.sidebar.image("logo.jpg", use_column_width=True)
 
 from agent.core_lda import ModelHandler
@@ -12,7 +12,7 @@ handler.create_model_adapter(name="TestAdapter")
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "assistant", "content": "Hi, I'm a Breathworks chatbot who can answer questions based on your . How can I help you?"}
+        {"role": "assistant", "content": "Hi, I'm a Breathworks chatbot who can answer questions. How can I help you?"}
     ]
 
 for msg in st.session_state.messages:
