@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Breathworks-AI Platform 🫁")
+st.title("Breathworks AI Platform 🫁")
 st.sidebar.image("logo.jpg", use_column_width=True)
 
 from agent.core_lda import ModelHandler
