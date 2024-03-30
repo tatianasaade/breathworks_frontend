@@ -1,5 +1,10 @@
 /* styles.css */
 /* Change text color for st.chatbot */
-.stChatBotMsg > div > div {
-  color: #000000; /* Set the text color to black */
+
+.stTextInput > div > div {
+  color: #31659C; /* Set the text color to black */
+}
+
+.st-emotion-cache-1uj96rm.ea3mdgi7 > div > div > div > div > div > div > div > div > div.st-ae.st-af.st-ag.st-ah.st-ai.st-aj.st-ak.st-al.st-am.st-an.st-ao.st-ap.st-aq.st-ar.st-as.st-at.st-au.st-av.st-aw.st-ax.st-ay.st-az.st-b0.st-b1.st-b2.st-b3.st-b4 > div > textarea {
+  caret-color: rgb(0,0,0);
 }
