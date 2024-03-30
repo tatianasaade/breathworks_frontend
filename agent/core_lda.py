@@ -31,6 +31,7 @@ class ModelHandler:
             for model in models:
                 if hasattr(model, "name"):
                     print(f"{model.name}: {model.id}")
+            print("All models listed")
         except Exception as e:
             print(f"Error listing models: {e}")
 
@@ -41,6 +42,7 @@ class ModelHandler:
         try:
             base = self.gradient.get_base_model(base_model_slug=self.base_model_slug)
             self.adapter = base.create_model_adapter(name=name)
+            print("Models adapter created")
         except Exception as e:
             print(f"Error creating model adapter: {e}")
 
@@ -142,46 +144,47 @@ class ModelHandler:
 
         try:
             response = self.adapter.complete(query=templated_query, max_generated_token_count=max_tokens)
+            print("We got a reponse")
             return response.generated_output
         except Exception as e:
             print(f"Error generating response: {e}")
 
 
 
-def main_stream(handler):
-    prompt = st.text_input('Enter your prompt here:')
+# def main_stream(handler):
+#     prompt = st.text_input('Enter your prompt here:')
 
-    if prompt:
-        # Generate a response using the provided handler
-        response = handler.generate_response(
-            query=prompt,
-            use_lda_insights=True
-        )
+#     if prompt:
+#         # Generate a response using the provided handler
+#         response = handler.generate_response(
+#             query=prompt,
+#             use_lda_insights=True
+#         )
 
-        # Display the response
-        st.write(response)
-        # handler.reset()
-
-
-if __name__ == "__main__":
-    handler = ModelHandler()
-    handler.list_models()
-    handler.create_model_adapter(name="TestAdapter")
-
-    # # Generate and print the original response without using LDA topics
-    # original_response = handler.generate_response(
-    #     query="What did you most like about Breathworks?",
-    #     use_lda_insights=False  # Original answer without LDA topics
-    # )
-    # print(f"> Original Response (without LDA insights):\n{original_response}\n")
-
-    # # Generate and print the enhanced response using LDA topics
-    # enhanced_response = handler.generate_response(
-    #     query="What did you most like about Breathworks?",
-    #     use_lda_insights=True  # Enhanced answer with LDA topics
-    # )
-    # print(f"> Enhanced Response (with LDA insights):\n{enhanced_response}\n")
+#         # Display the response
+#         st.write(response)
+#         # handler.reset()
 
 
-    main_stream(handler)
-    # handler.delete_adapter()
+# if __name__ == "__main__":
+#     handler = ModelHandler()
+#     handler.list_models()
+#     handler.create_model_adapter(name="TestAdapter")
+
+#     # # Generate and print the original response without using LDA topics
+#     # original_response = handler.generate_response(
+#     #     query="What did you most like about Breathworks?",
+#     #     use_lda_insights=False  # Original answer without LDA topics
+#     # )
+#     # print(f"> Original Response (without LDA insights):\n{original_response}\n")
+
+#     # # Generate and print the enhanced response using LDA topics
+#     # enhanced_response = handler.generate_response(
+#     #     query="What did you most like about Breathworks?",
+#     #     use_lda_insights=True  # Enhanced answer with LDA topics
+#     # )
+#     # print(f"> Enhanced Response (with LDA insights):\n{enhanced_response}\n")
+
+
+#     main_stream(handler)
+#     # handler.delete_adapter()
